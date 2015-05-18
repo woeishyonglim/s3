@@ -1,0 +1,135 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  margin: 0; padding: 0;
+  text-align: center;
+  font: normal 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+  font: normal 80% "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 -1px 0 #1760b1;
+  color: #fff;
+  padding: 3px 8px;
+  border: 1px solid #1760b1;
+  background: #278eff;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#68afff), to(#0a7fff));
+  background-image: -moz-linear-gradient(top, #68afff, #0a7fff);
+  background: linear-gradient(to bottom, #68afff 0%, #0a7fff 100%);
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px #999;
+     -moz-box-shadow: 0 1px 2px #999;
+          box-shadow: 0 1px 2px #999;
+  &:active {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0a7fff), to(#68afff));
+    background-image: -moz-linear-gradient(top, #0a7fff, #68afff);
+    background: linear-gradient(to bottom, #0a7fff 0%, #68afff 100%);
+    border-bottom: 1px solid #548dd0;
+  }
+  a { text-decoration: none; color: #fff; }
+}
+
+button.delete {
+  border: 1px solid #f64522;
+  background: #ea6a51;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ec7f6a), to(#ea6a51));
+  background-image: -moz-linear-gradient(top, #ec7f6a, #ea6a51);
+  background: linear-gradient(to bottom, #ec7f6a 0%, #ea6a51 100%);
+  text-shadow: 0 -1px 0 #f64522;
+  padding: 2px 5px;
+  border-radius: 100px;
+  cursor: pointer;
+  &:active {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ea6a51), to(#ec7f6a));
+    background-image: -moz-linear-gradient(top, #ea6a51, #ec7f6a);
+    background: linear-gradient(to bottom, #ea6a51 0%, #ec7f6a 100%);
+  }
+}
+
+main {
+  color: green;
+}
+
+p .primary {
+  color: red;
+  font-size: 400%;
+}
+
+p {
+  color: blue;
+}
+
+.content {
+  margin: 1em 0;
+}
+
+.metadata {
+  padding: 5px;
+  background: #f3f3f3;
+
+  p { font-size: 80%; margin: 5px 0; }
+}
+
+form {
+  margin: 5px 0;
+}
+
+ul {
+  margin: 0 auto;
+  width: 200px;
+
+  li {
+    text-align: left;
+    list-style: disc;
+    color: #444;
+    font-size: 80%;
+  }
+}
+
+#drag-circle {
+  text-align: center;
+  margin: 0 auto;
+  background: url(<%= asset_path("drag_diagram.gif") %>) no-repeat;
+  width:252px;
+  height: 314px;
+}
+
+#upload-msg {
+  text-align: center;
+  margin: 0 auto;
+  background: url(<%= asset_path("uploading_diagram.gif") %>) no-repeat;
+  font-size: 120%;
+  color: #444;
+  width:252px;
+  height: 314px;
+  display: none;
+}
+
+#error-msg { color: #f64522; }
+
+p.instruction { margin: 1em auto; width: 400px; line-height: 120%; }
+a { color: #36c; }
+a:visited { color: #36c; }
+h1 { font-size: 150%; }
+
+.avatar {
+  margin-top: -10px;
+  width: 80px; height: auto;
+  // border: 0px solid #535353;
+  // border-radius: 2px;
+}
