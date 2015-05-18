@@ -32,8 +32,10 @@ module FileUploader
 
 
   def image_upload(path, data, width=200)
+    content_type = data.content_type if data
     return "Only accept image type like JPG, PNG, and GIF" unless APPROVED_FILE_TYPE.include?(content_type)
     upload(path, data)
+    "OK"
   end
 
   module_function :upload, :image_upload, :get_path

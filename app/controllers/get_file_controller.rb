@@ -18,11 +18,20 @@ class GetFileController < ApplicationController
       redirect_to "/#{params[:options]}"
     else
       if type == "img"
-        FileUploader.image_upload(params[:options], params[:attachment])
-        redirect_to "/#{params[:options]}?t=img"
+        message = FileUploader.image_upload(params[:options], params[:attachment])
+        if message == "OK"
+          redirect_to "/#{params[:options]}?t=img"
+        else
+          flash[:error] = message
+          redirect_to "/#{params[:options]}?t=img"
+        end
       else
-        FileUploader.upload(params[:options], params[:attachment])
-        redirect_to "/#{params[:options]}"
+        if FileUploader.upload(params[:options], params[:attachment])
+          redirect_to "/#{params[:options]}"
+        else
+          flash[:error] = "You have to drag or choose a file first."
+          redirect_to "/file/#{params[:options]}"
+        end
       end
     end
   end
