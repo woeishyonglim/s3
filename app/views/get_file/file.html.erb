@@ -1,20 +1,21 @@
 <div class="action">
   <% if @file %>
-    <%= form_tag root_path do %>
-      <%= hidden_field_tag "options", params[:options] %>
-      <%= hidden_field_tag "t", params[:t] %>
-      <button class="delete" title="Delete file..."><%= image_tag("trash.png") %></button>
-    <% end %>
-    <% unless params[:t] == "img" %>
-    <div class="metadata">
-      <p>Unable to download? Please right click and choose &quot;Save as...&quot; or check your desktop for any downloaded file.</p>
-      <ul>
-        <li><%= link_to "Download file", "/download/#{@file.url}" %></li>
-        <li><%= @file.content_type %> (<%= number_to_human_size(@file.size) %>)</li>
-      </ul>
-    </div>
+  <%= form_tag remove_path do %>
+       <%= hidden_field_tag "options", params[:options] %>
+       <%= hidden_field_tag "t", params[:t] %>
+       <button class="delete" title="Delete file..."><%= image_tag("trash.png") %></button>
+     <% end %>
+     <% unless params[:t] == "img" %>
+     <div class="metadata">
+       <p>Unable to download? Please right click and choose &quot;Save as...&quot; or check your desktop for any downloaded file.</p>
+       <ul>
+         <li><%= link_to "Download file", "/download/#{@option}" %></li>
+         <li><%=  @file.get.content_type %> (<%= number_to_human_size(@file.size) %>)</li>
 
-    <% end %>
+       </ul>
+     </div>
+     <% end %>
+
   <% else %>
     <p id="drag-circle"></p>
     <p id="upload-msg"></p>
@@ -30,26 +31,23 @@
 
 <% if @file %>
 <div class="content">
-  <% if @file.content_type =~ /image/ %>
+  <% if @file.get.content_type =~ /image/ %>
     <% if params[:t] == "img" %>
-      <p> This is "img" </p>
-      <img src="/raw/<%= @file.url %>" class="avatar">
+      <img src="/raw/<%= @option %>" class="avatar">
     <% else %>
-    <p> This is "img 2" </p>
-
-      <img src="/raw/<%= @file.url %>">
+      <img src="/raw/<%= @option %>"
     <% end %>
-  <% elsif @file.content_type =~ /pdf/ %>
-    <object data="/raw/<%= @file.url %>" type="application/pdf" width="100%" height="1000">
-      <p>Could not display PDF file, <a href="/download/<%= @file.url %>">download instead?</a></p>
-    </object>
-  <% elsif @file.content_type =~ /text/ %>
-    <object data="/raw/<%= @file.url %>" type="text/plain" width="900" height="500">
-      <p>Could not display text file, <a href="/download/<%= @file.url %>">download instead?</a></p>
-    </object>
-  <% else %>
-    <a href="/download/<%= @file.url %>">Download raw file</a>
-  <% end %>
+    <% elsif @file.get.content_type =~ /pdf/ %>
+      <object data="/raw/<%= @option %>" type="application/pdf" width="100%" height="1000">
+        <p>Could not display PDF file, <a href="/download/<%= @option %>">download instead?</a></p>
+      </object>
+      <% elsif @file.get.content_type =~ /text/ %>
+        <object data="/raw/<%= @option %>" type="text/plain" width="900" height="500">
+          <p>Could not display text file, <a href="/download/<%= @option %>">download instead?</a></p>
+        </object>
+      <% else %>
+        <a href="/download/<%= @option %>">Download raw file</a>
+      <% end %>
 </div>
 
 <% end %>

@@ -8,5 +8,12 @@ module FileFinder
    ob = resource.bucket("woeishyong").objects(prefix: path).first
   end
 
-  module_function :find
+  def remove(path)
+    ob = find(path)
+    if ob
+      ob.delete
+    end     
+  end
+
+  module_function :find, :remove
 end
