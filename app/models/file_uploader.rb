@@ -23,7 +23,7 @@ module FileUploader
      )
      content_type = data.content_type if data
     resp = s3.put_object(
-      bucket: "woeishyong",
+      bucket: ENV['bucket_name'],
       key: get_path(path, data),
       body: data,
       content_type: content_type
